@@ -1,0 +1,214 @@
+.imgWrap .mainCoin {
+  width: 30vmin;
+  height: 30vmin;
+  display: block;
+  margin: 0 auto;
+  transition: 0.1s;
+  cursor: pointer;
+  position: relative;
+  border-radius: 100%;
+  background-image: url(../images/coins/Ripple.png);
+  background-size: contain;
+  z-index: 100;
+}
+#coins{
+  text-align: center;
+  position: relative;
+  top: 10vh;
+}
+.imgWrap #coinShadow{
+  width: 27vmin;
+  height: 27vmin;
+  display: block;
+  margin: 0 auto;
+  transition: 0.1s;
+  cursor: pointer;
+  position: relative;
+  top: -57%;
+  border-radius: 100%;
+  box-shadow: 0px 0px 100vmin lightblue;
+  z-index: 99;
+}
+.coinStash{
+  position: relative;
+  top: 60vh;
+  width: 100%;
+  height: 12vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.coinStash ul{
+  position: relative;
+  height: 12vmin;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.coinStash ul li{
+  display: inline;
+  list-style-type: none;
+  position: relative;
+  height: 10vmin;
+  width: 10vmin;
+  padding: 1vh;
+}
+.coinStash ul li img{
+  position: relative;
+  height: 10vmin;
+  width: 10vmin;
+  padding: 0vh;
+}
+.imgWrap .mainCoin:active {
+  transform: scale(0.95);
+}
+.imgWrap{
+  position: absolute;
+  top: 25%;
+  height: 50vmin;
+  width: 50%;
+}
+*{
+  font-family: 'Sniglet';
+}
+body {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  overflow: hidden;
+  background-repeat: repeat;
+  background-image: url(../images/assets/background.png);
+  font-family: 'Sniglet';
+}
+ul {
+  list-style-type: none;
+}
+ul li {
+  list-style-type: none;
+}
+
+p {
+  text-align: center;
+  margin: 10px;
+  font-size: 4vmin;
+}
+
+.pointer {
+  width: 10vmin;
+}
+
+.wrap {
+  width: 50vw;
+  height: 100vh;
+  padding: 0;
+}
+.wrap li {
+  display: flex;
+  height: 15vh;
+  padding: 2.5vh;
+  margin: 0;
+}
+.wrap li img {
+  height: 15vh;
+}
+.wrap li h1 {
+  margin: 0;
+}
+
+.main {
+  border: 12px solid transparent;
+  border-right: 6px solid transparent;
+  border-image: url(../images/assets/wood-pattern.png) 60 round;
+  box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  box-shadow: 0px 0px 8vmin inset;
+}
+nav {
+  background: #91aa9d;
+  position: absolute;
+  width: 100%;
+  height: 4.5vmin;
+  text-align: center;
+  transition: box-shadow 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav ul{
+  position: relative;
+  height: 100%;
+  width: 50vmin;
+  padding: 0;
+  margin: 0;
+}
+nav li {
+  display: inline-block;
+  list-style: none;
+  text-transform: uppercase;
+  position: relative;
+  height: 100%;
+  width: 5vmin;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fcfff5;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+nav a:hover {
+  background: #193449;
+}
+
+/* Sticky Navigation */
+.navScrolled {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0px 1px 5px #000;
+}
+.shop {
+  overflow-y: scroll;
+  padding: 0;
+  border: 12px solid transparent;
+  border-left: 6px solid transparent;
+  border-image: url(../images/assets/wood-pattern.png) 60 round;
+  box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  box-shadow: 0px 0px 8vmin inset;
+}
+.shop button {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 3vmin;
+  background-color: transparent;
+  border-radius: 2px;
+  border: 1px solid black;
+  outline: none;
+  cursor: pointer;
+}
+.shop button:active {
+  border: 1px solid #222;
+}
+.shop button.active {
+  background-color: rgba(0, 255, 0, 0.5);
+  color: white;
+}
+.shop p {
+  font-size: 2vmin;
+}
