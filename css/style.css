@@ -86,6 +86,8 @@ body {
   background-repeat: repeat;
   background-image: url(../images/assets/background.png);
   font-family: 'Sniglet';
+  color: white;
+  text-shadow: 2px 2px black;
 }
 ul {
   list-style-type: none;
