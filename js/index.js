@@ -30,8 +30,14 @@ let click = 1,
   temples = 0,
   towers = 0;
 
+function setCoins(){
+  coins = localStorage.getItem("coins");
+  document.getElementById("coins").innerHTML = coins + " coins";
+}
+
 document.querySelector(".mainCoin").addEventListener("click", function() {
   coins = coins + click;
+  localStorage.setItem("coins", coins);
   document.getElementById("coins").innerHTML = coins + " coins";
 });
 
