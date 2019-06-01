@@ -131,13 +131,13 @@ p {
   box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-  box-shadow: 0px 0px 8vmin inset;
+  box-shadow: 0px 0px 8vmin inset black !important;
 }
 nav {
   background: url(../images/assets/wood-pattern.png);
   position: absolute;
   width: 100%;
-  height: 4.5vmin;
+  height: 40px;
   text-align: center;
   transition: box-shadow 0.5s ease;
   display: flex;
@@ -185,15 +185,16 @@ nav a:hover {
 .shop {
   overflow-y: scroll;
   padding: 0;
+  padding-top: 18px;
   border: 12px solid transparent;
   border-left: 6px solid transparent;
   border-image: url(../images/assets/wood-pattern.png) 60 round;
   box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-  box-shadow: 0px 0px 8vmin inset;
+    overflow-x: hidden;
 }
-.shop button {
+.shop div {
   display: block;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -205,13 +206,16 @@ nav a:hover {
   border: 1px solid black;
   outline: none;
   cursor: pointer;
-}
-.shop button:active {
-  border: 1px solid #222;
-}
-.shop button.active {
-  background-color: rgba(0, 255, 0, 0.5);
   color: white;
+  text-shadow: 2px 2px black;
+  width: 100%;
+  height: 15%;
+  top: 0;
+  right: 0%;
+  background: rgba(0,0,0, 0.2);
+}
+.shop div:hover{
+  cursor: default;
 }
 .shop p {
   font-size: 2vmin;
