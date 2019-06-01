@@ -20,8 +20,7 @@ let clickCost = 50,
   templeCost = 20000000,
   towerCost = 330000000;
 
-let click = 1,
-  cursors = 0,
+let cursors = 0,
   grandmas = 0,
   farms = 0,
   mines = 0,
@@ -30,31 +29,17 @@ let click = 1,
   temples = 0,
   towers = 0;
 
-function setCoins(){
-  coins = localStorage.getItem("coins");
+function loadSave(){
+  coins = parseInt(localStorage.getItem("coins"));
   document.getElementById("coins").innerHTML = coins + " coins";
+  cursor = parseInt(localStorage.getItem("clicker"));
+  document.getElementById("pc").innerHTML = "You have " + cursor + " Clickers | Cost: " + cursorCost + " coins";
 }
 
 document.querySelector(".mainCoin").addEventListener("click", function() {
-  coins = coins + click;
+  coins = coins + 1;
   localStorage.setItem("coins", coins);
   document.getElementById("coins").innerHTML = coins + " coins";
-});
-
-document.querySelector(".powerClick").addEventListener("click", function() {
-  if (coins - clickCost >= 0) {
-    coins = coins - 50;
-    click = click * 2;
-    clicks = clicks + 1;
-    clickCost = clickCost * 5;
-    cursors = cursors * 2;
-    document.getElementById("pp").innerHTML = "You have " + clicks + " Power Clicks | Cost: " + clickCost + " coins";
-    document.getElementById("messages").innerHTML = "You bought 1 Power Click. Now you have " + clicks + ".";
-  } else {
-    coins = coins;
-    clicks = clicks;
-    clickCost = clickCost;
-  }
 });
 
 let clickerRun = function() {
@@ -71,6 +56,7 @@ document.querySelector(".clicker").addEventListener("click", function() {
     cursors = cursors + 0.1;
     setInterval(clickerRun, 1000);
     cursor = cursor + 1;
+    localStorage.setItem("cursor", cursor);
     document.getElementById("pc").innerHTML = "You have " + cursor + " Clickers | Cost: " + cursorCost + " coins";
     document.getElementById("messages").innerHTML = "You bought 1 Clicker. Now you have " + cursor + ".";
   }
