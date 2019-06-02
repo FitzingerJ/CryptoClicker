@@ -34,7 +34,7 @@ let miners = 0,
     ethBought = false,
     bitBought = false;
 
-  let curretCoin = "Ripple";
+  let currentCoin = "Ripple";
 
 tippy.setDefaults({
   placement: "bottom",
@@ -72,26 +72,17 @@ function loadSave(){
     document.getElementById("pc").innerHTML = "You have " + miner + " Miners | Cost: " + minerCost + " coins";
   }
   if(localStorage.getItem("miners") !== null){
-    miners = parseInt(localStorage.getItem("miners"));
+    miners = parseFloat(localStorage.getItem("miners"));
   }
   if(localStorage.getItem("minerCost") !== null){
     minerCost = parseInt(localStorage.getItem("minerCost"));
   }
   document.getElementById("pc").innerHTML = "You have " + miner + " Miners | Cost: " + minerCost + " coins";
-  clickerRun();
-  if(localStorage.getItem("curretCoin") !== null){
-    if(localStorage.getItem("curretCoin") == "Ripple"){
-      rippleChange();
-    } else if (localStorage.getItem("curretCoin") == "Lite") {
-      liteChange();
-    } else if (localStorage.getItem("curretCoin") == "Dash") {
-      dashChange();
-    } else if (localStorage.getItem("curretCoin") == "Eth") {
-      ethChange();
-    } else if (localStorage.getItem("curretCoin") == "Bit") {
-      bitChange();
-    }
-  }
+    setInterval(minerRun, 1000);
+    localStorage.setItem("miner", miner);
+    localStorage.setItem("miners", miners);
+    localStorage.setItem("minerCost", minerCost);
+    document.getElementById("pc").innerHTML = "You have " + miner + " Miners | Cost: " + minerCost + " coins";
   if(localStorage.getItem("liteBought") !== null){
     liteBought = localStorage.getItem("liteBought");
     liteTip.setContent("Litecoin");
@@ -116,6 +107,19 @@ function loadSave(){
     document.getElementsByClassName("bit")[0].style.filter = "grayscale(0%)";
     document.getElementsByClassName("bit")[0].style.Webkitfilter = "grayscale(0%)";
   }
+  if(localStorage.getItem("currentCoin") !== null){
+    if(localStorage.getItem("currentCoin") == "Ripple"){
+      rippleChange();
+    } else if (localStorage.getItem("currentCoin") == "Lite") {
+      liteChange();
+    } else if (localStorage.getItem("currentCoin") == "Dash") {
+      dashChange();
+    } else if (localStorage.getItem("currentCoin") == "Eth") {
+      ethChange();
+    } else if (localStorage.getItem("currentCoin") == "Bit") {
+      bitChange();
+    }
+  }
 }
 
 document.querySelector(".mainCoin").addEventListener("click", function() {
@@ -130,8 +134,8 @@ function rippleChange(){
   let shadow = document.getElementById("coinShadow");
   shadow.style.boxShadow =  "0px 0px 100vmin lightblue";
   coinValue = 1;
-  curretCoin = "Ripple";
-  localStorage.setItem("curretCoin", curretCoin);
+  currentCoin = "Ripple";
+  localStorage.setItem("currentCoin", currentCoin);
 }
 
 function liteChange(){
@@ -142,6 +146,7 @@ function liteChange(){
     document.getElementsByClassName("lite")[0].style.filter = "grayscale(0%)";
     document.getElementsByClassName("lite")[0].style.Webkitfilter = "grayscale(0%)";
     localStorage.setItem("liteBought", liteBought);
+    localStorage.setItem("coins", coins);
   }
   if(liteBought){
     let mainCoin = document.getElementById("coinImg");
@@ -151,9 +156,9 @@ function liteChange(){
     coinValue = 5;
     let liteImg = document.getElementsByClassName("lite");
     liteImg.src="images/coins/Litecoin.png";
-    curretCoin = "Lite";
+    currentCoin = "Lite";
     liteTip.setContent('Litecoin');
-    localStorage.setItem("curretCoin", curretCoin);
+    localStorage.setItem("currentCoin", currentCoin);
   }
 }
 
@@ -165,6 +170,7 @@ function dashChange(){
     document.getElementsByClassName("dash")[0].style.filter = "grayscale(0%)";
     document.getElementsByClassName("dash")[0].style.Webkitfilter = "grayscale(0%)";
     localStorage.setItem("dashBought", dashBought);
+    localStorage.setItem("coins", coins);
   }
   if(dashBought){
     let mainCoin = document.getElementById("coinImg");
@@ -172,9 +178,9 @@ function dashChange(){
     let shadow = document.getElementById("coinShadow");
     shadow.style.boxShadow =  "0px 0px 100vmin blue";
     coinValue = 100;
-    curretCoin = "Dash";
+    currentCoin = "Dash";
     dashTip.setContent('Dash');
-    localStorage.setItem("curretCoin", curretCoin);
+    localStorage.setItem("currentCoin", currentCoin);
   }
 }
 
@@ -186,6 +192,7 @@ function ethChange(){
     document.getElementsByClassName("eth")[0].style.filter = "grayscale(0%)";
     document.getElementsByClassName("eth")[0].style.Webkitfilter = "grayscale(0%)";
     localStorage.setItem("ethBought", ethBought);
+    localStorage.setItem("coins", coins);
   }
   if(ethBought){
     let mainCoin = document.getElementById("coinImg");
@@ -193,9 +200,9 @@ function ethChange(){
     let shadow = document.getElementById("coinShadow");
     shadow.style.boxShadow =  "0px 0px 100vmin purple";
     coinValue = 5000;
-    curretCoin = "Eth";
+    currentCoin = "Eth";
     ethTip.setContent('Ethereum');
-    localStorage.setItem("curretCoin", curretCoin);
+    localStorage.setItem("currentCoin", currentCoin);
   }
 }
 
@@ -207,6 +214,7 @@ function bitChange(){
     document.getElementsByClassName("bit")[0].style.filter = "grayscale(0%)";
     document.getElementsByClassName("bit")[0].style.Webkitfilter = "grayscale(0%)";
     localStorage.setItem("bitBought", bitBought);
+    localStorage.setItem("coins", coins);
   }
   if(bitBought){
     let mainCoin = document.getElementById("coinImg");
@@ -214,16 +222,18 @@ function bitChange(){
     let shadow = document.getElementById("coinShadow");
     shadow.style.boxShadow =  "0px 0px 100vmin yellow";
     coinValue = 100000;
-    curretCoin = "Bit";
+    currentCoin = "Bit";
     bitTip.setContent('Bitcoin');
-    localStorage.setItem("curretCoin", curretCoin);
+    localStorage.setItem("currentCoin", currentCoin);
   }
 }
 
-let clickerRun = function() {
+let minerRun = function() {
   coins = coins + miners;
   coins = Math.ceil(coins * 10) / 10;
+  localStorage.setItem("coins", coins);
   document.getElementById("coins").innerHTML = coins + " coins";
+
 };
 
 document.querySelector(".miner").addEventListener("click", function() {
@@ -231,7 +241,7 @@ document.querySelector(".miner").addEventListener("click", function() {
     coins = coins - minerCost;
     minerCost = Math.round(minerCost * 1.5);
     miners = miners + 0.1;
-    setInterval(clickerRun, 1000);
+    setInterval(minerRun, 1000);
     miner = miner + 1;
     localStorage.setItem("miner", miner);
     localStorage.setItem("miners", miners);
@@ -240,8 +250,9 @@ document.querySelector(".miner").addEventListener("click", function() {
   }
 });
 
-let grandmaRun = function() {
+let botRun = function() {
     coins = coins + bots;
+    localStorage.setItem("coins", coins);
     document.getElementById("coins").innerHTML = coins + " coins"
   }
 
@@ -250,14 +261,15 @@ document.querySelector(".bot").addEventListener("click", function() {
     coins = coins - botCost;
     botCost = Math.round(botCost * 1.5);
     bots = bots + 1;
-    setInterval(grandmaRun, 1000);
+    setInterval(botRun, 1000);
     bot = bot + 1;
     document.getElementById("pg").innerHTML = "You have " + bot + " Grandmas | Cost: " + botCost + " coins";
   }
 });
 
-let farmRun = function() {
+let graphicsCardRun = function() {
     coins = coins + graphicsCards;
+    localStorage.setItem("coins", coins);
     document.getElementById("coins").innerHTML = coins + " coins"
   }
 
@@ -266,14 +278,15 @@ document.querySelector(".graphicsCard").addEventListener("click", function() {
     coins = coins - graphicsCardCost;
     graphicsCardCost = Math.round(graphicsCardCost * 1.5);
     graphicsCards = graphicsCards + 3;
-    setInterval(farmRun, 1000);
+    setInterval(graphicsCardRun, 1000);
     graphicsCard = graphicsCard + 1;
     document.getElementById("pf").innerHTML = "You have " + graphicsCard + " Farms | Cost: " + graphicsCardCost + " coins";
   }
 });
 
-let mineRun = function() {
+let workstationRun = function() {
   coins = coins + workstations;
+  localStorage.setItem("coins", coins);
   document.getElementById("coins").innerHTML = coins + " coins"
 }
 
@@ -282,14 +295,15 @@ document.querySelector(".workstation").addEventListener("click", function() {
     coins = coins - workstationCost;
     workstationCost = Math.round(workstationCost * 1.5);
     workstations = workstations + 10;
-    setInterval(mineRun, 1000);
+    setInterval(workstationRun, 1000);
     workstation = workstation + 1;
     document.getElementById("pm").innerHTML = "You have " + workstation + " Mines | Cost: " + workstationCost + " coins";
   }
 });
 
-let factoryRun = function() {
+let serverfarmRun = function() {
   coins = coins + serverfarms;
+  localStorage.setItem("coins", coins);
   document.getElementById("coins").innerHTML = coins + " coins"
 }
 
@@ -298,14 +312,15 @@ document.querySelector(".serverfarm").addEventListener("click", function() {
     coins = coins - serverfarmCost;
     serverfarmCost = Math.round(serverfarmCost * 1.5);
     serverfarms = serverfarms + 50;
-    setInterval(factoryRun, 1000);
+    setInterval(serverfarmRun, 1000);
     serverfarm = serverfarm + 1;
     document.getElementById("fp").innerHTML = "You have " + serverfarm + " Factories | Cost: " + serverfarmCost + " coins";
   }
 });
 
-let bankRun = function() {
+let quantumCRun = function() {
   coins = coins + QuantumComputers;
+  localStorage.setItem("coins", coins);
   document.getElementById("coins").innerHTML = coins + " coins"
 }
 
@@ -314,14 +329,15 @@ document.querySelector(".QuantumComputer").addEventListener("click", function() 
     coins = coins - QuantumComputerCost;
     QuantumComputerCost = Math.round(QuantumComputerCost * 1.5);
     QuantumComputers = QuantumComputers + 100;
-    setInterval(bankRun, 1000);
+    setInterval(quantumCRun, 1000);
     QuantumComputer = QuantumComputer + 1;
     document.getElementById("pb").innerHTML = "You have " + QuantumComputer + " Banks | Cost: " + QuantumComputerCost + " coins";
   }
 });
 
-let templeRun = function() {
+let quantumCFRun = function() {
   coins = coins + QuantumComputerFarms;
+  localStorage.setItem("coins", coins);
   document.getElementById("coins").innerHTML = coins + " coins"
 }
 
@@ -330,14 +346,15 @@ document.querySelector(".QuantumComputer").addEventListener("click", function() 
     coins = coins - QuantumComputerFarmCost;
     QuantumComputerFarmCost = Math.round(QuantumComputerFarmCost * 1.5);
     QuantumComputerFarms = QuantumComputerFarms + 500;
-    setInterval(templeRun, 1000);
+    setInterval(quantumCFRun, 1000);
     QuantumComputerFarm = QuantumComputerFarm + 1;
     document.getElementById("pt").innerHTML = "You have " + QuantumComputerFarm + " Temples | Cost: " + QuantumComputerFarmCost + " coins";
   }
 });
 
-let towerRun = function() {
+let btcPlanetRun = function() {
   coins = coins + BitcoinPlanets;
+  localStorage.setItem("coins", coins);
   document.getElementById("coins").innerHTML = coins + " coins"
 }
 
@@ -346,7 +363,7 @@ document.querySelector(".BitcoinPlanet").addEventListener("click", function() {
     coins = coins - BitcoinPlanetCost;
     BitcoinPlanetCost = Math.round(BitcoinPlanetCost * 1.5);
     BitcoinPlanets = BitcoinPlanets + 1000;
-    setInterval(towerRun, 1000);
+    setInterval(btcPlanetRun, 1000);
     BitcoinPlanet = BitcoinPlanet + 1;
     document.getElementById("pw").innerHTML = "You have " + BitcoinPlanet + " Towers | Cost: " + BitcoinPlanetCost + " coins";
   }
