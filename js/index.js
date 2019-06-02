@@ -82,6 +82,7 @@ function liteChange(){
   if(coins >= 500 && liteBought == false){
     coins -= 500;
     document.getElementById("coins").innerHTML = coins + " coins";
+    document.getElementByClass("lite").src = "images/coins/Litecoin.png";
     liteBought = true;
     localStorage.setItem("liteBought", liteBought);
   }
