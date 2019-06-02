@@ -36,7 +36,7 @@ let cursors = 0,
     ethBought = false,
     bitBought = false;
 
-  let curretCoin = Ripple;
+  let curretCoin = "Ripple";
 
 function loadSave(){
   if(localStorage.getItem("coins") !== null){
@@ -74,15 +74,15 @@ function rippleChange(){
   let shadow = document.getElementById("coinShadow");
   shadow.style.boxShadow =  "0px 0px 100vmin lightblue";
   coinValue = 1;
-  curretCoin = Ripple;
+  curretCoin = "Ripple";
   localStorage.setItem("curretCoin", curretCoin);
+  particles.shape.image.src = "images/coins/Ripple.png";
 }
 
 function liteChange(){
   if(coins >= 500 && liteBought == false){
     coins -= 500;
     document.getElementById("coins").innerHTML = coins + " coins";
-    document.getElementByClass("lite").src = "images/coins/Litecoin.png";
     liteBought = true;
     localStorage.setItem("liteBought", liteBought);
   }
@@ -92,7 +92,9 @@ function liteChange(){
     let shadow = document.getElementById("coinShadow");
     shadow.style.boxShadow =  "0px 0px 100vmin grey";
     coinValue = 5;
-    curretCoin = Lite;
+    let liteImg = document.getElementsByClassName("lite");
+    liteImg.src="images/coins/Litecoin.png";
+    curretCoin = "Lite";
     localStorage.setItem("curretCoin", curretCoin);
   }
 }
@@ -110,7 +112,7 @@ function dashChange(){
     let shadow = document.getElementById("coinShadow");
     shadow.style.boxShadow =  "0px 0px 100vmin blue";
     coinValue = 100;
-    curretCoin = Dash;
+    curretCoin = "Dash";
     localStorage.setItem("curretCoin", curretCoin);
   }
 }
@@ -128,7 +130,7 @@ function ethChange(){
     let shadow = document.getElementById("coinShadow");
     shadow.style.boxShadow =  "0px 0px 100vmin purple";
     coinValue = 5000;
-    curretCoin = Eth;
+    curretCoin = "Eth";
     localStorage.setItem("curretCoin", curretCoin);
   }
 }
@@ -146,7 +148,7 @@ function bitChange(){
     let shadow = document.getElementById("coinShadow");
     shadow.style.boxShadow =  "0px 0px 100vmin yellow";
     coinValue = 100000;
-    curretCoin = Bit;
+    curretCoin = "Bit";
     localStorage.setItem("curretCoin", curretCoin);
   }
 }
