@@ -187,21 +187,21 @@ function loadSave(){
         document.getElementById("pt").innerHTML = "You have " + quantumComputerFarm + " Quantum Computer Farms | Cost: " + quantumComputerFarmCost + " coins";
       }
 
-      if(localStorage.getItem("quantumComputerFarm") !== null){
-        quantumComputerFarm = parseInt(localStorage.getItem("quantumComputerFarm"));
-        document.getElementById("pt").innerHTML = "You have " + quantumComputerFarm + " Quantum Computer Farms | Cost: " + quantumComputerFarmCost + " coins";
+      if(localStorage.getItem("bitcoinPlanet") !== null){
+        bitcoinPlanet = parseInt(localStorage.getItem("bitcoinPlanet"));
+        document.getElementById("pw").innerHTML = "You have " + bitcoinPlanet + " Bitcoin Planets | Cost: " + bitcoinPlanetCost + " coins";
       }
-      if(localStorage.getItem("quantumComputerFarms") !== null){
-        quantumComputerFarms = parseFloat(localStorage.getItem("quantumComputerFarms"));
+      if(localStorage.getItem("bitcoinPlanets") !== null){
+        bitcoinPlanets = parseFloat(localStorage.getItem("bitcoinPlanets"));
       }
-      if(localStorage.getItem("quantumComputerFarmCost") !== null){
-        quantumComputerFarmCost = parseInt(localStorage.getItem("quantumComputerFarmCost"));
-        document.getElementById("pt").innerHTML = "You have " + quantumComputerFarm + " Quantum Computer Farms | Cost: " + quantumComputerFarmCost + " coins";
-        setInterval(quantumCFRun, 1000);
-        localStorage.setItem("quantumComputerFarm", quantumComputerFarm);
-        localStorage.setItem("quantumComputerFarms", quantumComputerFarms);
-        localStorage.setItem("quantumComputerFarmCost", quantumComputerFarmCost);
-        document.getElementById("pt").innerHTML = "You have " + quantumComputerFarm + " Quantum Computer Farms | Cost: " + quantumComputerFarmCost + " coins";
+      if(localStorage.getItem("bitcoinPlanetCost") !== null){
+        bitcoinPlanetCost = parseInt(localStorage.getItem("bitcoinPlanetCost"));
+        document.getElementById("pw").innerHTML = "You have " + bitcoinPlanet + " Bitcoin Planets | Cost: " + bitcoinPlanetCost + " coins";
+        setInterval(btcPlanetRun, 1000);
+        localStorage.setItem("bitcoinPlanet", bitcoinPlanet);
+        localStorage.setItem("bitcoinPlanets", bitcoinPlanets);
+        localStorage.setItem("bitcoinPlanetCost", bitcoinPlanetCost);
+        document.getElementById("pw").innerHTML = "You have " + bitcoinPlanet + " Bitcoin Planets | Cost: " + bitcoinPlanetCost + " coins";
       }
 
 
