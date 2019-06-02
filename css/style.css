@@ -16,6 +16,12 @@
   position: relative;
   border-radius: 100%;
   z-index: 100;
+  pointer-events: none
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 #coinImg{
   position: relative;
@@ -68,12 +74,24 @@
   height: 10vmin;
   width: 10vmin;
   padding: 1vh;
+  pointer-events: none
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 .coinStash ul li img{
   position: relative;
   height: 10vmin;
   width: 10vmin;
   padding: 0vh;
+  pointer-events: none
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 .coinStash ul li img:hover{
   cursor: pointer;
@@ -205,9 +223,15 @@ nav a:hover {
   border-left: 6px solid transparent;
   border-image: url(../images/assets/wood-pattern.png) 60 round;
   box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    overflow-x: hidden;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  overflow-x: hidden;
+  pointer-events: none
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 .shop div {
   display: block;

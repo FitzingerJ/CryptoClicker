@@ -43,6 +43,13 @@ tippy.setDefaults({
 
 tippy.defaults;
 
+document.getElementsByClassName('coinImg').ondragstart = function() { return false; };
+document.getElementsByClassName('ripple')[0].ondragstart = function() { return false; };
+document.getElementsByClassName('lite')[0].ondragstart = function() { return false; };
+document.getElementsByClassName('dash')[0].ondragstart = function() { return false; };
+document.getElementsByClassName('eth')[0].ondragstart = function() { return false; };
+document.getElementsByClassName('bit')[0].ondragstart = function() { return false; };
+
   const rippleTipButton = document.querySelector('.ripple');
   const rippleTip = tippy(rippleTipButton);
   rippleTip.setContent('Ripple');
