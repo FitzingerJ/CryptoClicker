@@ -1,33 +1,31 @@
 
 let coins = 0,
-  clicks = 0,
-  cursor = 0,
-  grandma = 0,
-  farm = 0,
-  mine = 0,
-  factory = 0,
-  bank = 0,
-  temple = 0,
-  tower = 0;
+  miner = 0,
+  bot = 0,
+  graphicsCard = 0,
+  workstation = 0,
+  serverfarm = 0,
+  QuantumComputer = 0,
+  QuantumComputerFarm = 0,
+  BitcoinPlanet = 0;
 
-let clickCost = 50,
-  cursorCost = 15,
-  grandmaCost = 100,
-  farmCost = 1100,
-  mineCost = 12000,
-  factoryCost = 130000,
-  bankCost = 1200000,
-  templeCost = 20000000,
-  towerCost = 330000000;
+let minerCost = 15,
+  botCost = 100,
+  graphicsCardCost = 1100,
+  workstationCost = 12000,
+  serverfarmCost = 130000,
+  QuantumComputerCost = 1200000,
+  QuantumComputerFarmCost = 20000000,
+  BitcoinPlanetCost = 330000000;
 
-let cursors = 0,
-  grandmas = 0,
-  farms = 0,
-  mines = 0,
-  factories = 0,
-  banks = 0,
-  temples = 0,
-  towers = 0;
+let miners = 0,
+  bots = 0,
+  graphicsCards = 0,
+  workstations = 0,
+  serverfarms = 0,
+  QuantumComputers = 0,
+  QuantumComputerFarms = 0,
+  BitcoinPlanets = 0;
 
   let coinValue = 1;
 
@@ -54,25 +52,33 @@ tippy.defaults;
 
   const dashTipButton = document.querySelector('.dash');
   const dashTip = tippy(dashTipButton);
-  dashTip.setContent('Locked<br>Cost: 10000');
+  dashTip.setContent('Locked<br>Cost: 10.000');
 
   const ethTipButton = document.querySelector('.eth');
   const ethTip = tippy(ethTipButton);
-  ethTip.setContent('Locked<br>Cost: 500000');
+  ethTip.setContent('Locked<br>Cost: 500.000');
 
   const bitTipButton = document.querySelector('.bit');
   const bitTip = tippy(bitTipButton);
-  bitTip.setContent('Locked<br>Cost: 10000000');
+  bitTip.setContent('Locked<br>Cost: 10.000.000');
 
 function loadSave(){
   if(localStorage.getItem("coins") !== null){
     coins = parseInt(localStorage.getItem("coins"));
     document.getElementById("coins").innerHTML = coins + " coins";
   }
-  if(localStorage.getItem("clicker") !== null){
-    cursor = parseInt(localStorage.getItem("clicker"));
-    document.getElementById("pc").innerHTML = "You have " + cursor + " Clickers | Cost: " + cursorCost + " coins";
+  if(localStorage.getItem("miner") !== null){
+    miner = parseInt(localStorage.getItem("miner"));
+    document.getElementById("pc").innerHTML = "You have " + miner + " Miners | Cost: " + minerCost + " coins";
   }
+  if(localStorage.getItem("miners") !== null){
+    miners = parseInt(localStorage.getItem("miners"));
+  }
+  if(localStorage.getItem("minerCost") !== null){
+    minerCost = parseInt(localStorage.getItem("minerCost"));
+  }
+  document.getElementById("pc").innerHTML = "You have " + miner + " Miners | Cost: " + minerCost + " coins";
+  clickerRun();
   if(localStorage.getItem("curretCoin") !== null){
     if(localStorage.getItem("curretCoin") == "Ripple"){
       rippleChange();
@@ -89,18 +95,26 @@ function loadSave(){
   if(localStorage.getItem("liteBought") !== null){
     liteBought = localStorage.getItem("liteBought");
     liteTip.setContent("Litecoin");
+    document.getElementsByClassName("lite")[0].style.filter = "grayscale(0%)";
+    document.getElementsByClassName("lite")[0].style.Webkitfilter = "grayscale(0%)";
   }
   if(localStorage.getItem("dashBought") !== null){
     dashBought = localStorage.getItem("dashBought");
     dashTip.setContent("Dash");
+    document.getElementsByClassName("dash")[0].style.filter = "grayscale(0%)";
+    document.getElementsByClassName("dash")[0].style.Webkitfilter = "grayscale(0%)";
   }
   if(localStorage.getItem("ethBought") !== null){
     ethBought = localStorage.getItem("ethBought");
     ethTip.setContent("Ethereum");
+    document.getElementsByClassName("eth")[0].style.filter = "grayscale(0%)";
+    document.getElementsByClassName("eth")[0].style.Webkitfilter = "grayscale(0%)";
   }
   if(localStorage.getItem("bitBought") !== null){
     bitBought = localStorage.getItem("bitBought");
     bitTip.setContent("Bitcoin");
+    document.getElementsByClassName("bit")[0].style.filter = "grayscale(0%)";
+    document.getElementsByClassName("bit")[0].style.Webkitfilter = "grayscale(0%)";
   }
 }
 
@@ -118,7 +132,6 @@ function rippleChange(){
   coinValue = 1;
   curretCoin = "Ripple";
   localStorage.setItem("curretCoin", curretCoin);
-  particles.shape.image.src = "images/coins/Ripple.png";
 }
 
 function liteChange(){
@@ -126,6 +139,8 @@ function liteChange(){
     coins -= 500;
     document.getElementById("coins").innerHTML = coins + " coins";
     liteBought = true;
+    document.getElementsByClassName("lite")[0].style.filter = "grayscale(0%)";
+    document.getElementsByClassName("lite")[0].style.Webkitfilter = "grayscale(0%)";
     localStorage.setItem("liteBought", liteBought);
   }
   if(liteBought){
@@ -147,6 +162,8 @@ function dashChange(){
     coins -= 10000;
     document.getElementById("coins").innerHTML = coins + " coins";
     dashBought = true;
+    document.getElementsByClassName("dash")[0].style.filter = "grayscale(0%)";
+    document.getElementsByClassName("dash")[0].style.Webkitfilter = "grayscale(0%)";
     localStorage.setItem("dashBought", dashBought);
   }
   if(dashBought){
@@ -166,6 +183,8 @@ function ethChange(){
     coins -= 500000;
     document.getElementById("coins").innerHTML = coins + " coins";
     ethBought = true;
+    document.getElementsByClassName("eth")[0].style.filter = "grayscale(0%)";
+    document.getElementsByClassName("eth")[0].style.Webkitfilter = "grayscale(0%)";
     localStorage.setItem("ethBought", ethBought);
   }
   if(ethBought){
@@ -185,6 +204,8 @@ function bitChange(){
     coins -= 10000000;
     document.getElementById("coins").innerHTML = coins + " coins";
     bitBought = true;
+    document.getElementsByClassName("bit")[0].style.filter = "grayscale(0%)";
+    document.getElementsByClassName("bit")[0].style.Webkitfilter = "grayscale(0%)";
     localStorage.setItem("bitBought", bitBought);
   }
   if(bitBought){
@@ -200,140 +221,133 @@ function bitChange(){
 }
 
 let clickerRun = function() {
-  coins = coins + cursors;
+  coins = coins + miners;
   coins = Math.ceil(coins * 10) / 10;
   document.getElementById("coins").innerHTML = coins + " coins";
 };
 
-document.querySelector(".clicker").addEventListener("click", function() {
-  if (coins - cursorCost >= 0) {
-    console.log("clicker is equal to " + cursorCost);
-    coins = coins - cursorCost;
-    cursorCost = Math.round(cursorCost * 1.5);
-    cursors = cursors + 0.1;
+document.querySelector(".miner").addEventListener("click", function() {
+  if (coins - minerCost >= 0) {
+    coins = coins - minerCost;
+    minerCost = Math.round(minerCost * 1.5);
+    miners = miners + 0.1;
     setInterval(clickerRun, 1000);
-    cursor = cursor + 1;
-    localStorage.setItem("cursor", cursor);
-    document.getElementById("pc").innerHTML = "You have " + cursor + " Clickers | Cost: " + cursorCost + " coins";
-    document.getElementById("messages").innerHTML = "You bought 1 Clicker. Now you have " + cursor + ".";
+    miner = miner + 1;
+    localStorage.setItem("miner", miner);
+    localStorage.setItem("miners", miners);
+    localStorage.setItem("minerCost", minerCost);
+    document.getElementById("pc").innerHTML = "You have " + miner + " Miners | Cost: " + minerCost + " coins";
   }
 });
 
 let grandmaRun = function() {
-    coins = coins + grandmas;
+    coins = coins + bots;
     document.getElementById("coins").innerHTML = coins + " coins"
   }
 
-document.querySelector(".grandma").addEventListener("click", function() {
-  if (coins - grandmaCost >= 0) {
-    coins = coins - grandmaCost;
-    grandmaCost = Math.round(grandmaCost * 1.5);
-    grandmas = grandmas + 1;
+document.querySelector(".bot").addEventListener("click", function() {
+  if (coins - botCost >= 0) {
+    coins = coins - botCost;
+    botCost = Math.round(botCost * 1.5);
+    bots = bots + 1;
     setInterval(grandmaRun, 1000);
-    grandma = grandma + 1;
-    document.getElementById("pg").innerHTML = "You have " + grandma + " Grandmas | Cost: " + grandmaCost + " coins";
-    document.getElementById("messages").innerHTML = "You bought 1 Grandma. Now you have " + grandma + ".";
+    bot = bot + 1;
+    document.getElementById("pg").innerHTML = "You have " + bot + " Grandmas | Cost: " + botCost + " coins";
   }
 });
 
 let farmRun = function() {
-    coins = coins + farms;
+    coins = coins + graphicsCards;
     document.getElementById("coins").innerHTML = coins + " coins"
   }
 
-document.querySelector(".farm").addEventListener("click", function() {
-  if (coins - farmCost >= 0) {
-    coins = coins - farmCost;
-    farmCost = Math.round(farmCost * 1.5);
-    farms = farms + 3;
+document.querySelector(".graphicsCard").addEventListener("click", function() {
+  if (coins - graphicsCardCost >= 0) {
+    coins = coins - graphicsCardCost;
+    graphicsCardCost = Math.round(graphicsCardCost * 1.5);
+    graphicsCards = graphicsCards + 3;
     setInterval(farmRun, 1000);
-    farm = farm + 1;
-    document.getElementById("pf").innerHTML = "You have " + farm + " Farms | Cost: " + farmCost + " coins";
-    document.getElementById("messages").innerHTML = "You bought 1 Farm. Now you have " + farm + ".";
+    graphicsCard = graphicsCard + 1;
+    document.getElementById("pf").innerHTML = "You have " + graphicsCard + " Farms | Cost: " + graphicsCardCost + " coins";
   }
 });
 
 let mineRun = function() {
-  coins = coins + mines;
+  coins = coins + workstations;
   document.getElementById("coins").innerHTML = coins + " coins"
 }
 
-document.querySelector(".mine").addEventListener("click", function() {
-  if (coins - mineCost >= 0) {
-    coins = coins - mineCost;
-    mineCost = Math.round(mineCost * 1.5);
-    mines = mines + 10;
+document.querySelector(".workstation").addEventListener("click", function() {
+  if (coins - workstationCost >= 0) {
+    coins = coins - workstationCost;
+    workstationCost = Math.round(workstationCost * 1.5);
+    workstations = workstations + 10;
     setInterval(mineRun, 1000);
-    mine = mine + 1;
-    document.getElementById("pm").innerHTML = "You have " + mine + " Mines | Cost: " + mineCost + " coins";
-    document.getElementById("messages").innerHTML = "You bought 1 Mine. Now you have " + mine + ".";
+    workstation = workstation + 1;
+    document.getElementById("pm").innerHTML = "You have " + workstation + " Mines | Cost: " + workstationCost + " coins";
   }
 });
 
 let factoryRun = function() {
-  coins = coins + factories;
+  coins = coins + serverfarms;
   document.getElementById("coins").innerHTML = coins + " coins"
 }
 
-document.querySelector(".factory").addEventListener("click", function() {
-  if (coins - factoryCost >= 0) {
-    coins = coins - factoryCost;
-    factoryCost = Math.round(factoryCost * 1.5);
-    factories = factories + 50;
+document.querySelector(".serverfarm").addEventListener("click", function() {
+  if (coins - serverfarmCost >= 0) {
+    coins = coins - serverfarmCost;
+    serverfarmCost = Math.round(serverfarmCost * 1.5);
+    serverfarms = serverfarms + 50;
     setInterval(factoryRun, 1000);
-    factory = factory + 1;
-    document.getElementById("fp").innerHTML = "You have " + factory + " Factories | Cost: " + factoryCost + " coins";
-    document.getElementById("messages").innerHTML = "You bought 1 Factory. Now you have " + factory + ".";
+    serverfarm = serverfarm + 1;
+    document.getElementById("fp").innerHTML = "You have " + serverfarm + " Factories | Cost: " + serverfarmCost + " coins";
   }
 });
 
 let bankRun = function() {
-  coins = coins + banks;
+  coins = coins + QuantumComputers;
   document.getElementById("coins").innerHTML = coins + " coins"
 }
 
-document.querySelector(".bank").addEventListener("click", function() {
-  if (coins - bankCost >= 0) {
-    coins = coins - bankCost;
-    bankCost = Math.round(bankCost * 1.5);
-    banks = banks + 100;
+document.querySelector(".QuantumComputer").addEventListener("click", function() {
+  if (coins - QuantumComputerCost >= 0) {
+    coins = coins - QuantumComputerCost;
+    QuantumComputerCost = Math.round(QuantumComputerCost * 1.5);
+    QuantumComputers = QuantumComputers + 100;
     setInterval(bankRun, 1000);
-    bank = bank + 1;
-    document.getElementById("pb").innerHTML = "You have " + bank + " Banks | Cost: " + bankCost + " coins";
-    document.getElementById("messages").innerHTML = "You bought 1 Bank. Now you have " + bank + ".";
+    QuantumComputer = QuantumComputer + 1;
+    document.getElementById("pb").innerHTML = "You have " + QuantumComputer + " Banks | Cost: " + QuantumComputerCost + " coins";
   }
 });
 
 let templeRun = function() {
-  coins = coins + temples;
+  coins = coins + QuantumComputerFarms;
   document.getElementById("coins").innerHTML = coins + " coins"
 }
 
-document.querySelector(".bank").addEventListener("click", function() {
-  if (coins - templeCost >= 0) {
-    coins = coins - templeCost;
-    templeCost = Math.round(templeCost * 1.5);
-    temples = temples + 500;
+document.querySelector(".QuantumComputer").addEventListener("click", function() {
+  if (coins - QuantumComputerFarmCost >= 0) {
+    coins = coins - QuantumComputerFarmCost;
+    QuantumComputerFarmCost = Math.round(QuantumComputerFarmCost * 1.5);
+    QuantumComputerFarms = QuantumComputerFarms + 500;
     setInterval(templeRun, 1000);
-    temple = temple + 1;
-    document.getElementById("pt").innerHTML = "You have " + temple + " Temples | Cost: " + templeCost + " coins";
-    document.getElementById("messages").innerHTML = "You bought 1 Temple. Now you have " + temple + ".";
+    QuantumComputerFarm = QuantumComputerFarm + 1;
+    document.getElementById("pt").innerHTML = "You have " + QuantumComputerFarm + " Temples | Cost: " + QuantumComputerFarmCost + " coins";
   }
 });
 
 let towerRun = function() {
-  coins = coins + towers;
+  coins = coins + BitcoinPlanets;
   document.getElementById("coins").innerHTML = coins + " coins"
 }
 
-document.querySelector(".tower").addEventListener("click", function() {
-  if (coins - towerCost >= 0) {
-    coins = coins - towerCost;
-    towerCost = Math.round(towerCost * 1.5);
-    towers = towers + 1000;
+document.querySelector(".BitcoinPlanet").addEventListener("click", function() {
+  if (coins - BitcoinPlanetCost >= 0) {
+    coins = coins - BitcoinPlanetCost;
+    BitcoinPlanetCost = Math.round(BitcoinPlanetCost * 1.5);
+    BitcoinPlanets = BitcoinPlanets + 1000;
     setInterval(towerRun, 1000);
-    tower = tower + 1;
-    document.getElementById("pw").innerHTML = "You have " + tower + " Towers | Cost: " + towerCost + " coins";
-    document.getElementById("messages").innerHTML = "You bought 1 Wizard Tower. Now you have " + tower + ".";
+    BitcoinPlanet = BitcoinPlanet + 1;
+    document.getElementById("pw").innerHTML = "You have " + BitcoinPlanet + " Towers | Cost: " + BitcoinPlanetCost + " coins";
   }
 });

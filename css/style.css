@@ -276,3 +276,19 @@ nav a:hover {
   border-radius: 10px;
   background-color: rgba(0,0,0,0.3);
 }
+.lite{
+    -webkit-filter: brightness(60%) contrast(200%);
+    filter: brightness(60%) contrast(200%);
+}
+.dash{
+  -webkit-filter: grayscale(100%) brightness(60%) contrast(110%);
+  filter: grayscale(100%) brightness(90%) contrast(110%);
+}
+.eth{
+  -webkit-filter: grayscale(100%) brightness(60%) contrast(150%);
+  filter: grayscale(100%) brightness(90%) contrast(150%);
+}
+.bit{
+  -webkit-filter: grayscale(100%) brightness(60%) contrast(150%);
+  filter: grayscale(100%) brightness(60%) contrast(150%);
+}
