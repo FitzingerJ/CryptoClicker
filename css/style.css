@@ -208,7 +208,6 @@ nav a:hover {
   background: #193449;
 }
 
-/* Sticky Navigation */
 .navScrolled {
   position: fixed;
   top: 0;
@@ -309,8 +308,8 @@ nav a:hover {
   filter: grayscale(100%) brightness(90%) contrast(110%);
 }
 .eth{
-  -webkit-filter: grayscale(100%) brightness(60%) contrast(150%);
-  filter: grayscale(100%) brightness(90%) contrast(150%);
+  -webkit-filter: grayscale(100%) brightness(60%) contrast(180%);
+  filter: grayscale(100%) brightness(90%) contrast(180%);
 }
 .bit{
   -webkit-filter: grayscale(100%) brightness(60%) contrast(150%);
