@@ -35,6 +35,7 @@ let miners = 0,
     bitBought = false;
 
   let currentCoin = "Ripple";
+  let clicks = 0;
 
 tippy.setDefaults({
   placement: "bottom",
@@ -249,7 +250,9 @@ function loadSave(){
 
 document.querySelector(".mainCoin").addEventListener("click", function() {
   coins = coins + coinValue;
+  clicks++;
   localStorage.setItem("coins", coins);
+  localStorage.setItem("totalClicks", clicks);
   document.getElementById("coins").innerHTML = coins + " coins";
 });
 
