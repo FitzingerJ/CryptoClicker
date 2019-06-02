@@ -15,9 +15,13 @@
   cursor: pointer;
   position: relative;
   border-radius: 100%;
-  background-image: url(../images/coins/Ripple.png);
-  background-size: contain;
   z-index: 100;
+}
+#coinImg{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
 }
 #coins{
   text-align: center;
@@ -70,6 +74,9 @@
   height: 10vmin;
   width: 10vmin;
   padding: 0vh;
+}
+.coinStash ul li img:hover{
+  cursor: pointer;
 }
 .imgWrap .mainCoin:active {
   transform: scale(0.95);

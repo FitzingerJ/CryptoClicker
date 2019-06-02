@@ -29,18 +29,126 @@ let cursors = 0,
   temples = 0,
   towers = 0;
 
+  let coinValue = 1;
+
+  let liteBought = false,
+    dashBought = false,
+    ethBought = false,
+    bitBought = false;
+
+  let curretCoin = Ripple;
+
 function loadSave(){
-  coins = parseInt(localStorage.getItem("coins"));
-  document.getElementById("coins").innerHTML = coins + " coins";
-  cursor = parseInt(localStorage.getItem("clicker"));
-  document.getElementById("pc").innerHTML = "You have " + cursor + " Clickers | Cost: " + cursorCost + " coins";
+  if(localStorage.getItem("coins") !== null){
+    coins = parseInt(localStorage.getItem("coins"));
+    document.getElementById("coins").innerHTML = coins + " coins";
+  }
+  if(localStorage.getItem("clicker") !== null){
+    cursor = parseInt(localStorage.getItem("clicker"));
+    document.getElementById("pc").innerHTML = "You have " + cursor + " Clickers | Cost: " + cursorCost + " coins";
+  }
+  if(localStorage.getItem("curretCoin") !== null){
+    if(localStorage.getItem("curretCoin") == "Ripple"){
+      rippleChange();
+    } else if (localStorage.getItem("curretCoin") == "Lite") {
+      liteChange();
+    } else if (localStorage.getItem("curretCoin") == "Dash") {
+      dashChange();
+    } else if (localStorage.getItem("curretCoin") == "Eth") {
+      ethChange();
+    } else if (localStorage.getItem("curretCoin") == "Bit") {
+      bitChange();
+    }
+  }
 }
 
 document.querySelector(".mainCoin").addEventListener("click", function() {
-  coins = coins + 1;
+  coins = coins + coinValue;
   localStorage.setItem("coins", coins);
   document.getElementById("coins").innerHTML = coins + " coins";
 });
+
+function rippleChange(){
+  let mainCoin = document.getElementById("coinImg");
+  mainCoin.src="images/coins/Ripple.png";
+  let shadow = document.getElementById("coinShadow");
+  shadow.style.boxShadow =  "0px 0px 100vmin lightblue";
+  coinValue = 1;
+  curretCoin = Ripple;
+  localStorage.setItem("curretCoin", curretCoin);
+}
+
+function liteChange(){
+  if(coins >= 500 && liteBought == false){
+    coins -= 500;
+    document.getElementById("coins").innerHTML = coins + " coins";
+    liteBought = true;
+    localStorage.setItem("liteBought", liteBought);
+  }
+  if(liteBought){
+    let mainCoin = document.getElementById("coinImg");
+    mainCoin.src="images/coins/Litecoin.png";
+    let shadow = document.getElementById("coinShadow");
+    shadow.style.boxShadow =  "0px 0px 100vmin grey";
+    coinValue = 5;
+    curretCoin = Lite;
+    localStorage.setItem("curretCoin", curretCoin);
+  }
+}
+
+function dashChange(){
+  if(coins >= 10000 && dashBought == false){
+    coins -= 10000;
+    document.getElementById("coins").innerHTML = coins + " coins";
+    dashBought = true;
+    localStorage.setItem("dashBought", dashBought);
+  }
+  if(dashBought){
+    let mainCoin = document.getElementById("coinImg");
+    mainCoin.src="images/coins/Dash.png";
+    let shadow = document.getElementById("coinShadow");
+    shadow.style.boxShadow =  "0px 0px 100vmin blue";
+    coinValue = 100;
+    curretCoin = Dash;
+    localStorage.setItem("curretCoin", curretCoin);
+  }
+}
+
+function ethChange(){
+  if(coins >= 500000 && ethBought == false){
+    coins -= 500000;
+    document.getElementById("coins").innerHTML = coins + " coins";
+    ethBought = true;
+    localStorage.setItem("ethBought", ethBought);
+  }
+  if(ethBought){
+    let mainCoin = document.getElementById("coinImg");
+    mainCoin.src="images/coins/Ethereum.png";
+    let shadow = document.getElementById("coinShadow");
+    shadow.style.boxShadow =  "0px 0px 100vmin purple";
+    coinValue = 5000;
+    curretCoin = Eth;
+    localStorage.setItem("curretCoin", curretCoin);
+  }
+}
+
+function bitChange(){
+  if(coins >= 10000000 && bitBought == false){
+    coins -= 10000000;
+    document.getElementById("coins").innerHTML = coins + " coins";
+    bitBought = true;
+    localStorage.setItem("bitBought", bitBought);
+  }
+  if(bitBought){
+    let mainCoin = document.getElementById("coinImg");
+    mainCoin.src="images/coins/Bitcoin.png";
+    let shadow = document.getElementById("coinShadow");
+    shadow.style.boxShadow =  "0px 0px 100vmin yellow";
+    coinValue = 100000;
+    curretCoin = Bit;
+    localStorage.setItem("curretCoin", curretCoin);
+  }
+}
 
 let clickerRun = function() {
   coins = coins + cursors;
