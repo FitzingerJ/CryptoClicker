@@ -38,6 +38,32 @@ let cursors = 0,
 
   let curretCoin = "Ripple";
 
+tippy.setDefaults({
+  placement: "bottom",
+});
+
+tippy.defaults;
+
+  const rippleTipButton = document.querySelector('.ripple');
+  const rippleTip = tippy(rippleTipButton);
+  rippleTip.setContent('Ripple');
+
+  const liteTipButton = document.querySelector('.lite');
+  const liteTip = tippy(liteTipButton);
+  liteTip.setContent('Locked<br>Cost: 500');
+
+  const dashTipButton = document.querySelector('.dash');
+  const dashTip = tippy(dashTipButton);
+  dashTip.setContent('Locked<br>Cost: 10000');
+
+  const ethTipButton = document.querySelector('.eth');
+  const ethTip = tippy(ethTipButton);
+  ethTip.setContent('Locked<br>Cost: 500000');
+
+  const bitTipButton = document.querySelector('.bit');
+  const bitTip = tippy(bitTipButton);
+  bitTip.setContent('Locked<br>Cost: 10000000');
+
 function loadSave(){
   if(localStorage.getItem("coins") !== null){
     coins = parseInt(localStorage.getItem("coins"));
@@ -59,6 +85,22 @@ function loadSave(){
     } else if (localStorage.getItem("curretCoin") == "Bit") {
       bitChange();
     }
+  }
+  if(localStorage.getItem("liteBought") !== null){
+    liteBought = localStorage.getItem("liteBought");
+    liteTip.setContent("Litecoin");
+  }
+  if(localStorage.getItem("dashBought") !== null){
+    dashBought = localStorage.getItem("dashBought");
+    dashTip.setContent("Dash");
+  }
+  if(localStorage.getItem("ethBought") !== null){
+    ethBought = localStorage.getItem("ethBought");
+    ethTip.setContent("Ethereum");
+  }
+  if(localStorage.getItem("bitBought") !== null){
+    bitBought = localStorage.getItem("bitBought");
+    bitTip.setContent("Bitcoin");
   }
 }
 
@@ -95,6 +137,7 @@ function liteChange(){
     let liteImg = document.getElementsByClassName("lite");
     liteImg.src="images/coins/Litecoin.png";
     curretCoin = "Lite";
+    liteTip.setContent('Litecoin');
     localStorage.setItem("curretCoin", curretCoin);
   }
 }
@@ -113,6 +156,7 @@ function dashChange(){
     shadow.style.boxShadow =  "0px 0px 100vmin blue";
     coinValue = 100;
     curretCoin = "Dash";
+    dashTip.setContent('Dash');
     localStorage.setItem("curretCoin", curretCoin);
   }
 }
@@ -131,6 +175,7 @@ function ethChange(){
     shadow.style.boxShadow =  "0px 0px 100vmin purple";
     coinValue = 5000;
     curretCoin = "Eth";
+    ethTip.setContent('Ethereum');
     localStorage.setItem("curretCoin", curretCoin);
   }
 }
@@ -149,6 +194,7 @@ function bitChange(){
     shadow.style.boxShadow =  "0px 0px 100vmin yellow";
     coinValue = 100000;
     curretCoin = "Bit";
+    bitTip.setContent('Bitcoin');
     localStorage.setItem("curretCoin", curretCoin);
   }
 }
