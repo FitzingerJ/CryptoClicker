@@ -37,18 +37,78 @@ let miners = 0,
   let currentCoin = "Ripple";
   let clicks = 0;
 
+  let cps1 = 0.0,
+    cps2 = 0.0,
+    cps3 = 0.0,
+    cps4 = 0.0,
+    cps5 = 0.0,
+    cps6 = 0.0,
+    cps7 = 0.0,
+    cps8 = 0.0;
+
+let cps = cps1 + cps2 + cps3 + cps4 + cps5 + cps6 + cps7 + cps8;
+
 tippy.setDefaults({
   placement: "bottom",
 });
 
 tippy.defaults;
 
-document.getElementsByClassName('coinImg').ondragstart = function() { return false; };
+document.getElementById('coinImg').ondragstart = function() { return false; };
 document.getElementsByClassName('ripple')[0].ondragstart = function() { return false; };
 document.getElementsByClassName('lite')[0].ondragstart = function() { return false; };
 document.getElementsByClassName('dash')[0].ondragstart = function() { return false; };
 document.getElementsByClassName('eth')[0].ondragstart = function() { return false; };
 document.getElementsByClassName('bit')[0].ondragstart = function() { return false; };
+
+let minerRun = function() {
+  cps1 = miners;
+  cps = cps1 + cps2 + cps3 + cps4 + cps5 + cps6 + cps7 + cps8;
+  document.getElementById("cps").innerHTML = cps + " cps";
+  localStorage.setItem("cps1", cps1);
+};
+let botRun = function() {
+    cps2 = bots;
+    cps = cps1 + cps2 + cps3 + cps4 + cps5 + cps6 + cps7 + cps8;
+    document.getElementById("cps").innerHTML = cps + " cps";
+    localStorage.setItem("cps2", cps2);
+};
+let graphicsCardRun = function() {
+    cps3 = graphicsCards;
+    cps = cps1 + cps2 + cps3 + cps4 + cps5 + cps6 + cps7 + cps8;
+    document.getElementById("cps").innerHTML = cps + " cps";
+    localStorage.setItem("cps3", cps3);
+};
+let workstationRun = function() {
+  cps4 = workstations;
+  cps = cps1 + cps2 + cps3 + cps4 + cps5 + cps6 + cps7 + cps8;
+  document.getElementById("cps").innerHTML = cps + " cps";
+  localStorage.setItem("cps4", cps4);
+};
+let serverfarmRun = function() {
+  cps5 = serverfarms;
+  cps = cps1 + cps2 + cps3 + cps4 + cps5 + cps6 + cps7 + cps8;
+  document.getElementById("cps").innerHTML = cps + " cps";
+  localStorage.setItem("cps5", cps5);
+};
+let quantumCRun = function() {
+  cps6 = quantumComputers;
+  cps = cps1 + cps2 + cps3 + cps4 + cps5 + cps6 + cps7 + cps8;
+  document.getElementById("cps").innerHTML = cps + " cps";
+  localStorage.setItem("cps6", cps6);
+};
+let quantumCFRun = function() {
+  cps7 = quantumComputerFarms;
+  cps = cps1 + cps2 + cps3 + cps4 + cps5 + cps6 + cps7 + cps8;
+  document.getElementById("cps").innerHTML = cps + " cps";
+  localStorage.setItem("cps7", cps7);
+};
+let btcPlanetRun = function() {
+  cps8 = bitcoinPlanets;
+  cps = cps1 + cps2 + cps3 + cps4 + cps5 + cps6 + cps7 + cps8;
+  document.getElementById("cps").innerHTML = cps + " cps";
+  localStorage.setItem("cps8", cps8);
+};
 
   const rippleTipButton = document.querySelector('.ripple');
   const rippleTip = tippy(rippleTipButton);
@@ -85,7 +145,7 @@ function loadSave(){
   if(localStorage.getItem("minerCost") !== null){
     minerCost = parseInt(localStorage.getItem("minerCost"));
     document.getElementById("pc").innerHTML = "You have " + miner + " Miners | Cost: " + minerCost + " coins";
-      setInterval(minerRun, 1000);
+      minerRun();
       localStorage.setItem("miner", miner);
       localStorage.setItem("miners", miners);
       localStorage.setItem("minerCost", minerCost);
@@ -101,7 +161,7 @@ function loadSave(){
     if(localStorage.getItem("botCost") !== null){
       botCost = parseInt(localStorage.getItem("botCost"));
       document.getElementById("pg").innerHTML = "You have " + bot + " Bots | Cost: " + botCost + " coins";
-        setInterval(botRun, 1000);
+        botRun();
         localStorage.setItem("miner", bot);
         localStorage.setItem("miners", bots);
         localStorage.setItem("minerCost", botCost);
@@ -118,7 +178,7 @@ function loadSave(){
       if(localStorage.getItem("graphicsCardCost") !== null){
         graphicsCardCost = parseInt(localStorage.getItem("graphicsCardCost"));
         document.getElementById("pf").innerHTML = "You have " + graphicsCard + " Graphics Cards | Cost: " + graphicsCardCost + " coins";
-        setInterval(graphicsCardRun, 1000);
+        graphicsCardRun();
         localStorage.setItem("graphicsCard", graphicsCard);
         localStorage.setItem("graphicsCards", graphicsCards);
         localStorage.setItem("graphicsCardCost", graphicsCardCost);
@@ -137,7 +197,7 @@ function loadSave(){
       if(localStorage.getItem("workstationCost") !== null){
         workstationCost = parseInt(localStorage.getItem("workstationCost"));
         document.getElementById("pm").innerHTML = "You have " + workstation + " Workstations | Cost: " + workstationCost + " coins";
-        setInterval(workstationRun, 1000);
+        workstationRun();
         localStorage.setItem("workstation", workstation);
         localStorage.setItem("workstations", workstations);
         localStorage.setItem("workstationCost", workstationCost);
@@ -154,7 +214,7 @@ function loadSave(){
       if(localStorage.getItem("serverfarmCost") !== null){
         serverfarmCost = parseInt(localStorage.getItem("serverfarmCost"));
         document.getElementById("fp").innerHTML = "You have " + serverfarm + " Serverfarms | Cost: " + serverfarmCost + " coins";
-        setInterval(serverfarmRun, 1000);
+        serverfarmRun();
         localStorage.setItem("serverfarm", serverfarm);
         localStorage.setItem("serverfarms", serverfarms);
         localStorage.setItem("serverfarmCost", serverfarmCost);
@@ -171,7 +231,7 @@ function loadSave(){
       if(localStorage.getItem("quantumComputerCost") !== null){
         quantumComputerCost = parseInt(localStorage.getItem("quantumComputerCost"));
         document.getElementById("pb").innerHTML = "You have " + quantumComputer + " Quantum Computers | Cost: " + quantumComputerCost + " coins";
-        setInterval(quantumCRun, 1000);
+        quantumCRun();
         localStorage.setItem("quantumComputer", quantumComputer);
         localStorage.setItem("quantumComputers", quantumComputers);
         localStorage.setItem("quantumComputerCost", quantumComputerCost);
@@ -188,7 +248,7 @@ function loadSave(){
       if(localStorage.getItem("quantumComputerFarmCost") !== null){
         quantumComputerFarmCost = parseInt(localStorage.getItem("quantumComputerFarmCost"));
         document.getElementById("pt").innerHTML = "You have " + quantumComputerFarm + " Quantum Computer Farms | Cost: " + quantumComputerFarmCost + " coins";
-        setInterval(quantumCFRun, 1000);
+        quantumCFRun();
         localStorage.setItem("quantumComputerFarm", quantumComputerFarm);
         localStorage.setItem("quantumComputerFarms", quantumComputerFarms);
         localStorage.setItem("quantumComputerFarmCost", quantumComputerFarmCost);
@@ -205,17 +265,12 @@ function loadSave(){
       if(localStorage.getItem("bitcoinPlanetCost") !== null){
         bitcoinPlanetCost = parseInt(localStorage.getItem("bitcoinPlanetCost"));
         document.getElementById("pw").innerHTML = "You have " + bitcoinPlanet + " Bitcoin Planets | Cost: " + bitcoinPlanetCost + " coins";
-        setInterval(btcPlanetRun, 1000);
+        btcPlanetRun();
         localStorage.setItem("bitcoinPlanet", bitcoinPlanet);
         localStorage.setItem("bitcoinPlanets", bitcoinPlanets);
         localStorage.setItem("bitcoinPlanetCost", bitcoinPlanetCost);
         document.getElementById("pw").innerHTML = "You have " + bitcoinPlanet + " Bitcoin Planets | Cost: " + bitcoinPlanetCost + " coins";
       }
-
-
-
-
-
   if(localStorage.getItem("liteBought") !== null){
     liteBought = localStorage.getItem("liteBought");
     liteTip.setContent("Litecoin");
@@ -252,6 +307,30 @@ function loadSave(){
     } else if (localStorage.getItem("currentCoin") == "Bit") {
       bitChange();
     }
+  }
+  if(localStorage.getItem("cps1") !== null){
+    cps1 = parseFloat(localStorage.getItem("cps1"));
+  }
+  if(localStorage.getItem("cps2") !== null){
+    cps2 = parseFloat(localStorage.getItem("cps2"));
+  }
+  if(localStorage.getItem("cps3") !== null){
+    cps3 = parseFloat(localStorage.getItem("cps3"));
+  }
+  if(localStorage.getItem("cps4") !== null){
+    cps4 = parseFloat(localStorage.getItem("cps4"));
+  }
+  if(localStorage.getItem("cps5") !== null){
+    cps5 = parseFloat(localStorage.getItem("cps5"));
+  }
+  if(localStorage.getItem("cps6") !== null){
+    cps6 = parseFloat(localStorage.getItem("cps6"));
+  }
+  if(localStorage.getItem("cps7") !== null){
+    cps7 = parseFloat(localStorage.getItem("cps7"));
+  }
+  if(localStorage.getItem("cps8") !== null){
+    cps8 = parseFloat(localStorage.getItem("cps8"));
   }
 }
 
@@ -363,20 +442,24 @@ function bitChange(){
   }
 }
 
-let minerRun = function() {
-  coins = coins + miners;
+let run = function(){
+  cps = cps1 + cps2 + cps3 + cps4 + cps5 + cps6 + cps7 + cps8;
+  coins = coins + cps;
   coins = Math.ceil(coins * 10) / 10;
   localStorage.setItem("coins", coins);
   document.getElementById("coins").innerHTML = coins + " coins";
+}
 
-};
+setInterval(run, 1000);
+
 
 document.querySelector(".miner").addEventListener("click", function() {
   if (coins - minerCost >= 0) {
     coins = coins - minerCost;
+    document.getElementById("coins").innerHTML = coins + " coins";
     minerCost = Math.round(minerCost * 1.5);
     miners = miners + 0.1;
-    setInterval(minerRun, 1000);
+    minerRun();
     miner = miner + 1;
     localStorage.setItem("miner", miner);
     localStorage.setItem("miners", miners);
@@ -385,18 +468,15 @@ document.querySelector(".miner").addEventListener("click", function() {
   }
 });
 
-let botRun = function() {
-    coins = coins + bots;
-    localStorage.setItem("coins", coins);
-    document.getElementById("coins").innerHTML = coins + " coins"
-  }
+
 
 document.querySelector(".bot").addEventListener("click", function() {
   if (coins - botCost >= 0) {
     coins = coins - botCost;
+    document.getElementById("coins").innerHTML = coins + " coins";
     botCost = Math.round(botCost * 1.5);
     bots = bots + 1;
-    setInterval(botRun, 1000);
+    botRun();
     bot = bot + 1;
     localStorage.setItem("bot", bot);
     localStorage.setItem("bots", bots);
@@ -405,18 +485,15 @@ document.querySelector(".bot").addEventListener("click", function() {
   }
 });
 
-let graphicsCardRun = function() {
-    coins = coins + graphicsCards;
-    localStorage.setItem("coins", coins);
-    document.getElementById("coins").innerHTML = coins + " coins"
-  }
+
 
 document.querySelector(".graphicsCard").addEventListener("click", function() {
   if (coins - graphicsCardCost >= 0) {
     coins = coins - graphicsCardCost;
+    document.getElementById("coins").innerHTML = coins + " coins";
     graphicsCardCost = Math.round(graphicsCardCost * 1.5);
     graphicsCards = graphicsCards + 3;
-    setInterval(graphicsCardRun, 1000);
+    graphicsCardRun();
     graphicsCard = graphicsCard + 1;
     localStorage.setItem("graphicsCard", graphicsCard);
     localStorage.setItem("graphicsCards", graphicsCards);
@@ -425,18 +502,15 @@ document.querySelector(".graphicsCard").addEventListener("click", function() {
   }
 });
 
-let workstationRun = function() {
-  coins = coins + workstations;
-  localStorage.setItem("coins", coins);
-  document.getElementById("coins").innerHTML = coins + " coins"
-}
+
 
 document.querySelector(".workstation").addEventListener("click", function() {
   if (coins - workstationCost >= 0) {
     coins = coins - workstationCost;
+    document.getElementById("coins").innerHTML = coins + " coins";
     workstationCost = Math.round(workstationCost * 1.5);
     workstations = workstations + 10;
-    setInterval(workstationRun, 1000);
+    workstationRun();
     workstation = workstation + 1;
     localStorage.setItem("workstation", workstation);
     localStorage.setItem("workstations", workstations);
@@ -445,18 +519,15 @@ document.querySelector(".workstation").addEventListener("click", function() {
   }
 });
 
-let serverfarmRun = function() {
-  coins = coins + serverfarms;
-  localStorage.setItem("coins", coins);
-  document.getElementById("coins").innerHTML = coins + " coins"
-}
+
 
 document.querySelector(".serverfarm").addEventListener("click", function() {
   if (coins - serverfarmCost >= 0) {
     coins = coins - serverfarmCost;
+    document.getElementById("coins").innerHTML = coins + " coins";
     serverfarmCost = Math.round(serverfarmCost * 1.5);
     serverfarms = serverfarms + 50;
-    setInterval(serverfarmRun, 1000);
+    serverfarmRun();
     serverfarm = serverfarm + 1;
     localStorage.setItem("serverfarm", serverfarm);
     localStorage.setItem("serverfarms", serverfarms);
@@ -465,18 +536,15 @@ document.querySelector(".serverfarm").addEventListener("click", function() {
   }
 });
 
-let quantumCRun = function() {
-  coins = coins + quantumComputers;
-  localStorage.setItem("coins", coins);
-  document.getElementById("coins").innerHTML = coins + " coins"
-}
+
 
 document.querySelector(".quantumComputer").addEventListener("click", function() {
   if (coins - quantumComputerCost >= 0) {
     coins = coins - quantumComputerCost;
+    document.getElementById("coins").innerHTML = coins + " coins";
     quantumComputerCost = Math.round(quantumComputerCost * 1.5);
     quantumComputers = quantumComputers + 100;
-    setInterval(quantumCRun, 1000);
+    quantumCRun();
     quantumComputer = quantumComputer + 1;
     localStorage.setItem("quantumComputer", quantumComputer);
     localStorage.setItem("quantumComputers", quantumComputers);
@@ -485,18 +553,15 @@ document.querySelector(".quantumComputer").addEventListener("click", function() 
   }
 });
 
-let quantumCFRun = function() {
-  coins = coins + quantumComputerFarms;
-  localStorage.setItem("coins", coins);
-  document.getElementById("coins").innerHTML = coins + " coins"
-}
+
 
 document.querySelector(".quantumComputerFarm").addEventListener("click", function() {
   if (coins - quantumComputerFarmCost >= 0) {
     coins = coins - quantumComputerFarmCost;
+    document.getElementById("coins").innerHTML = coins + " coins";
     quantumComputerFarmCost = Math.round(quantumComputerFarmCost * 1.5);
     quantumComputerFarms = quantumComputerFarms + 500;
-    setInterval(quantumCFRun, 1000);
+    quantumCFRun();
     quantumComputerFarm = quantumComputerFarm + 1;
     localStorage.setItem("quantumComputerFarm", quantumComputerFarm);
     localStorage.setItem("quantumComputerFarms", quantumComputerFarms);
@@ -505,18 +570,15 @@ document.querySelector(".quantumComputerFarm").addEventListener("click", functio
   }
 });
 
-let btcPlanetRun = function() {
-  coins = coins + bitcoinPlanets;
-  localStorage.setItem("coins", coins);
-  document.getElementById("coins").innerHTML = coins + " coins"
-}
+
 
 document.querySelector(".bitcoinPlanet").addEventListener("click", function() {
   if (coins - bitcoinPlanetCost >= 0) {
     coins = coins - bitcoinPlanetCost;
+    document.getElementById("coins").innerHTML = coins + " coins";
     bitcoinPlanetCost = Math.round(bitcoinPlanetCost * 1.5);
     bitcoinPlanets = bitcoinPlanets + 1000;
-    setInterval(btcPlanetRun, 1000);
+    btcPlanetRun();
     bitcoinPlanet = bitcoinPlanet + 1;
     localStorage.setItem("bitcoinPlanet", bitcoinPlanet);
     localStorage.setItem("bitcoinPlanets", bitcoinPlanets);

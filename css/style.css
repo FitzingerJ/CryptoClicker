@@ -34,6 +34,11 @@
   position: relative;
   top: 10vh;
 }
+#cps{
+  text-align: center;
+  position: relative;
+  top: 9vh;
+}
 .imgWrap #coinShadow{
   width: 27vmin;
   height: 27vmin;
