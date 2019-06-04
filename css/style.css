@@ -183,9 +183,12 @@ nav {
 nav ul{
   position: relative;
   height: 100%;
-  width: 50vmin;
+  width: 100vmin;
   padding: 0;
   margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 nav li {
   display: inline-block;
@@ -193,9 +196,11 @@ nav li {
   text-transform: uppercase;
   position: relative;
   height: 100%;
-  width: 5vmin;
-  padding: 0;
+  padding-left: 2vmin;
   margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 nav a {
@@ -203,11 +208,14 @@ nav a {
   color: #fcfff5;
   position: relative;
   height: 100%;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.15em;
 }
 
 nav a:hover {
-  background: #193449;
+  background-color: rgba(0,0,0,0.2);
 }
 
 .navScrolled {
@@ -272,7 +280,7 @@ nav a:hover {
   height: 80%;
   width: 18%;
   left: -2%;
-  top: -92%;
+  bottom: 13.25vh;
   color: white;
   text-shadow: 2px 2px black;
   background-image: url(../images/assets/button3.png);
@@ -282,6 +290,7 @@ nav a:hover {
   float: right;
   border-radius: 2vh;
   box-shadow: 0px 0px 1vmin black !important;
+  outline: none;
 }
 .shop button p{
   font-size: 4vmin !important;
@@ -349,4 +358,17 @@ nav a:hover {
 .bit{
   -webkit-filter: grayscale(100%) brightness(60%) contrast(150%);
   filter: grayscale(100%) brightness(60%) contrast(150%);
+}
+#backButton{
+  position: relative;
+  transform: scale(0.2);
+  z-index: 10000;
+  border-radius: 100%;
+  top: 0%;
+  left: 0%;
+  box-shadow: 0px 0px 10vmin yellow;
+  float: left;
+}
+#backButton:hover{
+  cursor: pointer;
 }
